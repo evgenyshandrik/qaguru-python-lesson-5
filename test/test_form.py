@@ -68,7 +68,8 @@ def test_sign_up():
     gender_types = s('#genterWrapper')
     gender_types.all('.custom-radio').element_by(have.exact_text(User.sex)).click()
 
-    s('#userNumber').type(User.phone)
+    mobile_phone = '#userNumber'
+    s(mobile_phone).type(User.phone)
 
     s('#dateOfBirthInput').click()
     s('.react-datepicker__year-select').element(f'[value="{User.date_of_birthday.get("year")}"]').click()
