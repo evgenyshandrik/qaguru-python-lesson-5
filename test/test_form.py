@@ -8,7 +8,7 @@ from selene.support.shared import browser
 from selene.support.shared.jquery_style import s, ss
 
 from controls import TagsInput, Dropdown, DatePicker, Table
-from util.get_resources import resource
+from util.resources import path
 
 
 class User():
@@ -91,7 +91,7 @@ def test_sign_up():
     hobbies_types = s('#hobbiesWrapper')
     hobbies_types.all('.custom-checkbox').element_by(have.exact_text(User.hobby)).click()
 
-    s('#uploadPicture').send_keys(resource(f'{User.avatar}'))
+    s('#uploadPicture').send_keys(path(f'{User.avatar}'))
 
     s('#currentAddress').type(User.address)
 
