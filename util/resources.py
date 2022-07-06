@@ -3,7 +3,7 @@ Module for work with resources
 """
 
 
-def resource(relative_path):
+def path(relative_path):
     """
     Get path to resource file
     """
