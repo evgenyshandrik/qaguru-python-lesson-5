@@ -1,7 +1,7 @@
 """
 Controls on the page
 """
-from selene.support.shared.jquery_style import s
+from selene.support.shared.jquery_style import s, ss
 from typing import Optional
 
 from selene import have, command
@@ -22,6 +22,9 @@ class TagsInput:
         browser.all(
             '.subjects-auto-complete__option'
         ).element_by(have.text(autocomplete or from_)).click()
+
+    def autocomplete(self, from_: str):
+        self.element.type(from_).press_tab()
 
 
 class Dropdown:

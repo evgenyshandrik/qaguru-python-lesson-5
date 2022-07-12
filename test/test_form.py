@@ -85,7 +85,7 @@ def test_sign_up():
     first_user_subject = User.subject[0]
     second_user_subject = User.subject[1]
     subjects = TagsInput(s('#subjectsInput'))
-    subjects.add(first_user_subject[0:3], autocomplete=first_user_subject)
+    subjects.autocomplete(from_=first_user_subject[0:3])
     subjects.add(second_user_subject)
 
     hobbies_types = s('#hobbiesWrapper')
