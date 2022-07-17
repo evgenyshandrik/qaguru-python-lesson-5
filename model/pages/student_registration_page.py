@@ -2,6 +2,7 @@
 Page object
 """
 from selene import have, command
+from selene.core.entity import Element
 from selene.support.shared.jquery_style import s
 
 from model.controls.contorls import Dropdown, Table, TagsInput, DatePicker
@@ -80,5 +81,5 @@ class ModalResultingForm(object):
     def __init__(self):
         self.result_table = Table(s('.modal-content .table'))
 
-    def get_cells_by_index(self, index: int):
-        return self.result_table.cells_of_row(index)
+    def get_cells_by_index(self, index: int, label: str, expected_result: str):
+        return self.result_table.cells_of_row(index).should(have.exact_texts(label, expected_result))
