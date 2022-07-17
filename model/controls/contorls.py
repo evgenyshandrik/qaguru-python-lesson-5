@@ -1,7 +1,7 @@
 """
-Controls on the page
+Controls on the pages
 """
-from selene.support.shared.jquery_style import s, ss
+from selene.support.shared.jquery_style import s
 from typing import Optional
 
 from selene import have, command
@@ -9,7 +9,7 @@ from selene.core.entity import Element
 from selene.support.shared import browser
 
 
-class TagsInput:
+class TagsInput(object):
     """
     Page object tag input
     """
@@ -27,7 +27,7 @@ class TagsInput:
         self.element.type(from_).press_tab()
 
 
-class Dropdown:
+class Dropdown(object):
     """
         Page object dropdown
     """
@@ -45,7 +45,7 @@ class Dropdown:
         ).type(option).press_enter()
 
 
-class DatePicker:
+class DatePicker(object):
     """
         Page object date picker
     """
@@ -73,7 +73,7 @@ class DatePicker:
         s(f'.react-datepicker__day--0{option}').click()
 
 
-class Table:
+class Table(object):
     """
         Page object table
     """
