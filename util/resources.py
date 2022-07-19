@@ -7,10 +7,10 @@ def path(relative_path):
     """
     Get path to resource file
     """
-    import test
+    import tests
     from pathlib import Path
     return (
-        Path(test.__file__)
+        Path(tests.__file__)
         .parent
         .parent
         .joinpath('resources/')
