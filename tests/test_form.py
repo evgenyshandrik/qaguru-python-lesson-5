@@ -6,7 +6,7 @@ from selene.core.entity import Element
 
 from data.user import User, expected_date_of_birthday
 from model import application_manager
-from test.conftest import open_page
+from tests.conftest import open_page
 
 
 def test_sign_up():
