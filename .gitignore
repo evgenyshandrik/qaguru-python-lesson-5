@@ -31,4 +31,5 @@ __pycache__/
 venv*/
 
 # Allure
-allure-results
+.allure-results*
+allure-results*/
