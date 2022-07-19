@@ -9,7 +9,7 @@ class User(object):
     """
     first_name = 'Evgen'
     last_name = 'Sh'
-    email = 'tests@tests.ru'
+    email = 'test@test.ru'
     sex = 'Male'
     phone = 1234567890
     date_of_birthday = '20.03.1991'
@@ -18,7 +18,7 @@ class User(object):
     address = 'Address street'
     state = 'NCR'
     city = 'Delhi'
-    avatar = 'tests.png'
+    avatar = 'test.png'
 
 
 month_name = {'1': 'January',
