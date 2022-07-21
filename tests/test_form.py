@@ -1,14 +1,16 @@
 """
 Testing sing up form
 """
-from selene import have
-from selene.core.entity import Element
-
+import allure
+from allure_commons.types import AttachmentType
 from data.user import User, expected_date_of_birthday
 from model import application_manager
 from tests.conftest import open_page
+from util.file_util import take_screenshot
 
 
+@allure.description('Test sign up form')
+@allure.tag('UI')
 def test_sign_up():
     """
     Testing sign up form
@@ -28,6 +30,8 @@ def test_sign_up():
         .set_state(User.state) \
         .set_city(User.city) \
         .submit_form()
+
+    take_screenshot(name='Screenshot form', type_file=AttachmentType.PNG)
 
     application_manager.result_form.get_cells_by_index(0, 'Student Name', f'{User.first_name} {User.last_name}')
     application_manager.result_form.get_cells_by_index(1, 'Student Email', User.email)
