@@ -6,7 +6,7 @@ import allure
 from selene import have, command
 from selene.support.shared.jquery_style import s
 from model.controls.contorls import Dropdown, Table, TagsInput, DatePicker
-from util.file_util import path_from_resources
+from util.resources import path
 
 
 class StudentRegistrationForm(object):
@@ -59,7 +59,7 @@ class StudentRegistrationForm(object):
 
     @allure.step("Set avatar: {path_value}")
     def set_avatar(self, path_value: str):
-        s('#uploadPicture').send_keys(path_from_resources(f'{path_value}'))
+        s('#uploadPicture').send_keys(path(f'{path_value}'))
         return self
 
     @allure.step("Set address: {value}")

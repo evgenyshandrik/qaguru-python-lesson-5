@@ -22,12 +22,18 @@ def browser_management():
         "browserVersion": "100.0",
         "selenoid:options": {
             "enableVNC": True,
-            "enableVideo": False
+            "enableVideo": True
         }
     }
 
-    browser.config.driver = webdriver.Remote(command_executor="http://user1:1234@selenoid.autotests.cloud:4444/wd/hub",
-                                      desired_capabilities=capabilities)
+    login = os.getenv('LOGIN')
+    password = os.getenv('PASSWORD')
+    hub = os.getenv('HUB')
+
+    browser.config.driver = webdriver.Remote(
+        command_executor=f"https://{login}:{password}@{hub}",
+        desired_capabilities=capabilities)
+
     browser.config.base_url = os.getenv('selene.base_url', 'https://demoqa.com')
     browser.config.browser_name = os.getenv('selene.browser_name', 'chrome')
     browser.config.hold_browser_open = (
