@@ -17,7 +17,7 @@ def test_sign_up():
     """
     Testing sign up form
     """
-    open_page('/automation-practice-form')
+    open_page('https://demoqa.com/automation-practice-form')
 
     application_manager.registration_form \
         .set_name(User.first_name, User.last_name) \
