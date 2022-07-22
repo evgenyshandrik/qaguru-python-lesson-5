@@ -23,6 +23,9 @@ def load_env():
 
 
 def pytest_addoption(parser):
+    """
+    Parser option
+    """
     parser.addoption(
         '--remote_driver',
         default='selenoid.autotests.cloud'
