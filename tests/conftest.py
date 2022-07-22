@@ -5,10 +5,16 @@ import os
 import time
 import allure
 import pytest
+from dotenv import load_dotenv
 
 from selene import have, command
 from selene.support.shared import browser
 from selenium import webdriver
+
+
+@pytest.fixture(scope='session', autouse=True)
+def load_env():
+    load_dotenv()
 
 
 @pytest.fixture(scope='function', autouse=True)
