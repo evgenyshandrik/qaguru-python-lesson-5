@@ -11,15 +11,28 @@ from selene import have, command
 from selene.support.shared import browser
 from selenium import webdriver
 
+DEFAULT_REMOTE_DRIVER = 'selenoid.autotests.cloud'
+
 
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
+    """
+    Load .env
+    """
     load_dotenv()
+
+
+def pytest_addoption(parser):
+    parser.addoption(
+        '--remote_driver',
+        help='Path to remote driver',
+        default='selenoid.autotests.cloud'
+    )
 
 
 @pytest.fixture(scope='function', autouse=True)
 @allure.step('Set up base url, browser type')
-def browser_management():
+def browser_management(request):
     """
     Set up browser
     """
@@ -34,10 +47,11 @@ def browser_management():
 
     login = os.getenv('LOGIN')
     password = os.getenv('PASSWORD')
-    hub = os.getenv('HUB')
+    remote_driver = request.config.getoption('--remote_driver')
+    remote_driver = remote_driver if remote_driver != "" else DEFAULT_REMOTE_DRIVER
 
     browser.config.driver = webdriver.Remote(
-        command_executor=f"https://{login}:{password}@{hub}",
+        command_executor=f"https://{login}:{password}@{remote_driver}/wd/hub",
         desired_capabilities=capabilities)
 
     browser.config.browser_name = os.getenv('selene.browser_name', 'chrome')
