@@ -25,7 +25,6 @@ def load_env():
 def pytest_addoption(parser):
     parser.addoption(
         '--remote_driver',
-        help='Path to remote driver',
         default='selenoid.autotests.cloud'
     )
 
@@ -36,6 +35,8 @@ def browser_management(request):
     """
     Set up browser
     """
+    remote_driver = request.config.getoption('--remote_driver')
+    remote_driver = remote_driver if remote_driver != "" else DEFAULT_REMOTE_DRIVER
     capabilities = {
         "browserName": "chrome",
         "browserVersion": "100.0",
@@ -47,8 +48,6 @@ def browser_management(request):
 
     login = os.getenv('LOGIN')
     password = os.getenv('PASSWORD')
-    remote_driver = request.config.getoption('--remote_driver')
-    remote_driver = remote_driver if remote_driver != "" else DEFAULT_REMOTE_DRIVER
 
     browser.config.driver = webdriver.Remote(
         command_executor=f"https://{login}:{password}@{remote_driver}/wd/hub",
