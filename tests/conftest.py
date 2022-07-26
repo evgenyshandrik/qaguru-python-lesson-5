@@ -12,6 +12,8 @@ from selene import have, command
 from selene.support.shared import browser
 from selenium import webdriver
 
+from util.resources import path
+
 DEFAULT_REMOTE_DRIVER = 'selenoid.autotests.cloud'
 
 
@@ -40,7 +42,7 @@ def set_up_config_notification():
     """
     token = os.getenv('TOKEN')
     chat_id = os.getenv('CHAT_ID')
-    file = open('notification/config.json', 'w')
+    file = open(path('config.json'), 'w')
     json_str = {
         "base": {
             "project": "qaguru python",
