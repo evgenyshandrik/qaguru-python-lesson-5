@@ -1,12 +1,14 @@
 """
 Testing sing up form
 """
-import allure
 from allure_commons.types import AttachmentType
+from selene.support.shared import browser
+
 from data.user import User, expected_date_of_birthday
 from model import application_manager
 from tests.conftest import open_page
-from util.file_util import take_screenshot
+from util.attachment import take_screenshot, add_logs, add_html, add_video
+import allure
 
 
 @allure.description('Test sign up form')
@@ -15,7 +17,7 @@ def test_sign_up():
     """
     Testing sign up form
     """
-    open_page('/automation-practice-form')
+    open_page('https://demoqa.com/automation-practice-form')
 
     application_manager.registration_form \
         .set_name(User.first_name, User.last_name) \
@@ -43,3 +45,7 @@ def test_sign_up():
     application_manager.result_form.get_cells_by_index(7, 'Picture', User.avatar)
     application_manager.result_form.get_cells_by_index(8, 'Address', User.address)
     application_manager.result_form.get_cells_by_index(9, 'State and City', f'{User.state} {User.city}')
+
+    add_logs(browser)
+    add_html(browser)
+    add_video('Video steps of test')
