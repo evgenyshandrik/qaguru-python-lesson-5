@@ -2,4 +2,3 @@ pytest
 selene>=2.0.b4
 allure-pytest
 python-dotenv==0.20.0
-json

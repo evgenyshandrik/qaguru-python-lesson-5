@@ -42,8 +42,7 @@ def set_up_config_notification():
     """
     token = os.getenv('TOKEN')
     chat_id = os.getenv('CHAT_ID')
-    file = open(path('config.json'), 'w')
-    print(f"PATH TO CONFIG {path('config.json')}")
+    file = open(path('config.json'), 'w+')
     json_str = {
         "base": {
             "project": "qaguru python",

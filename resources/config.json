@@ -1,0 +1,16 @@
+{
+    "base": {
+        "project": "qaguru python",
+        "environment": "prod",
+        "comment": "",
+        "reportLink": "",
+        "language": "en",
+        "allureFolder": "allure-report",
+        "enableChart": true
+    },
+    "telegram": {
+        "token": "None",
+        "chat": "None",
+        "replyTo": ""
+    }
+}
