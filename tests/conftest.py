@@ -5,6 +5,7 @@ import os
 import time
 import allure
 import pytest
+import json
 from dotenv import load_dotenv
 
 from selene import have, command
@@ -30,6 +31,35 @@ def pytest_addoption(parser):
         '--remote_driver',
         default='selenoid.autotests.cloud'
     )
+
+
+@pytest.fixture(scope='session', autouse=True)
+def set_up_config_notification():
+    """
+    Set up config notification
+    """
+    token = os.getenv('TOKEN')
+    chat_id = os.getenv('CHAT_ID')
+    file = open('notification/config.json', 'w')
+    json_str = {
+        "base": {
+            "project": "qaguru python",
+            "environment": "prod",
+            "comment": "",
+            "reportLink": "",
+            "language": "en",
+            "allureFolder": "allure-report",
+            "enableChart": True
+        },
+        "telegram": {
+            "token": f"{token}",
+            "chat": f"{chat_id}",
+            "replyTo": ""
+        }
+    }
+    json_object = json.dumps(json_str, indent=4)
+    file.write(json_object)
+    file.close()
 
 
 @pytest.fixture(scope='function', autouse=True)

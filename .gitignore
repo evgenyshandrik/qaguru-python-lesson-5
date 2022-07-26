@@ -33,6 +33,9 @@ venv*/
 # Allure
 .allure-results*
 allure-results*/
+.allure-report*
+allure-report*/
 
 # .env
 .env
+env
