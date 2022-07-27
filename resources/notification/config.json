@@ -3,14 +3,14 @@
         "project": "qaguru python",
         "environment": "prod",
         "comment": "",
-        "reportLink": "",
+        "reportLink": "https://jenkins.autotests.cloud/job/C01-evgeny-shandrik-python-jenkins/",
         "language": "en",
         "allureFolder": "allure-report",
         "enableChart": true
     },
     "telegram": {
-        "token": "None",
-        "chat": "None",
+        "token": "5526402380:AAEH7eFHD2Ka6xuFYlvGKK4ZWOIb68EM3RQ",
+        "chat": "-1001753050874",
         "replyTo": ""
     }
 }
