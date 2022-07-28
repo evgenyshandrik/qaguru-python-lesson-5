@@ -35,35 +35,6 @@ def pytest_addoption(parser):
     )
 
 
-@pytest.fixture(scope='session', autouse=True)
-def set_up_config_notification():
-    """
-    Set up config notification
-    """
-    token = os.getenv('TOKEN')
-    chat_id = os.getenv('CHAT_ID')
-    file = open(path('config.json'), 'w+')
-    json_str = {
-        "base": {
-            "project": "qaguru python",
-            "environment": "prod",
-            "comment": "",
-            "reportLink": "",
-            "language": "en",
-            "allureFolder": "allure-report",
-            "enableChart": True
-        },
-        "telegram": {
-            "token": f"{token}",
-            "chat": f"{chat_id}",
-            "replyTo": ""
-        }
-    }
-    json_object = json.dumps(json_str, indent=4)
-    file.write(json_object)
-    file.close()
-
-
 @pytest.fixture(scope='function', autouse=True)
 @allure.step('Set up base url, browser type')
 def browser_management(request):
